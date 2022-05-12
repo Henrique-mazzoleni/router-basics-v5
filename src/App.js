@@ -1,11 +1,31 @@
-import styles from './App.module.css';
+import { Fragment } from "react";
+import { Route } from "react-router-dom";
 
-function App() {
+import Welcome from "./pages/Welcome";
+import Products from "./pages/Products";
+
+import MainHeader from "./components/MainHeader";
+import ProductDetail from "./pages/ProductDetail";
+
+import styles from "./App.module.css";
+
+const App = () => {
   return (
-    <div className={styles.app}>
-      <h1>Let's get Started</h1>
-    </div>
+    <Fragment>
+      <MainHeader />
+      <div className={styles.app}>
+        <Route path="/welcome">
+          <Welcome />
+        </Route>
+        <Route path="/products" exact>
+          <Products />
+        </Route>
+        <Route path="/products/:productId">
+          <ProductDetail />
+        </Route>
+      </div>
+    </Fragment>
   );
-}
+};
 
 export default App;
