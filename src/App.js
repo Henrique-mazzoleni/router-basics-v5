@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 import Welcome from "./pages/Welcome";
 import Products from "./pages/Products";
@@ -12,6 +12,9 @@ import styles from "./App.module.css";
 const App = () => {
   return (
     <Fragment>
+      <Route path="/">
+        <Redirect to="/welcome" />
+      </Route>
       <MainHeader />
       <div className={styles.app}>
         <Route path="/welcome">
